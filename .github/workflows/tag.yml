@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v2
+      - run: python .ci/get_changelog.py
       - id: version
         run: echo "::set-output name=out::$(python .ci/get_version.py)"
       - id: body
@@ -25,7 +26,6 @@ jobs:
     needs: [getter]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ needs.getter.outputs.version }}"
       - uses: actions/checkout@v2
       - uses: softprops/action-gh-release@v1
         with:
