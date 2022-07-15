@@ -13,10 +13,11 @@ jobs:
       body: ${{ steps.body.outputs.out }}
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
       - id: version
-        run: echo "::set-output name=out::$(cat VERSION)"
+        run: echo "::set-output name=out::$(python .ci/get_version.py)"
       - id: body
-        run: echo "::set-output name=out::$(cat BODY)"
+        run: echo "::set-output name=out::$(python .ci/get_changelog.py)"
 
   release:
     needs: [getter]
