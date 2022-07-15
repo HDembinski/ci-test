@@ -19,7 +19,7 @@ jobs:
         run: echo "::set-output name=out::$(cat BODY)"
 
   release:
-    needs: [version]
+    needs: [getter]
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ needs.getter.outputs.version }}"
