@@ -13,6 +13,8 @@ jobs:
       body: ${{ steps.body.outputs.out }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
       - id: version
         run: echo "::set-output name=out::$(python .ci/get_version.py)"
@@ -25,8 +27,6 @@ jobs:
     steps:
       - run: echo "${{ needs.getter.outputs.version }}"
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: softprops/action-gh-release@v1
         with:
           body: ${{ needs.getter.outputs.body }}
