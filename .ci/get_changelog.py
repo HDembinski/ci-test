@@ -2,7 +2,6 @@ from pathlib import PurePath as Path
 import re
 import subprocess as subp
 from pkg_resources import parse_version
-import datetime
 
 project_dir = Path(__file__).parent.parent
 

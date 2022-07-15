@@ -13,6 +13,7 @@ jobs:
       body: ${{ steps.body.outputs.out }}
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
       - id: version
         run: echo "::set-output name=out::$(cat VERSION)"
       - id: body
