@@ -9,11 +9,11 @@ jobs:
   get_version:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.version.outputs.result }}      
+      version: ${{ steps.version.outputs.out }}      
     steps:
       - uses: actions/checkout@v2
       - id: version
-        run: echo "::set-output name=test::$(cat VERSION)"
+        run: echo "::set-output name=out::$(cat VERSION)"
 
   release:
     needs: [get_version]
