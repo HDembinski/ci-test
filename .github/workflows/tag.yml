@@ -19,7 +19,9 @@ jobs:
     needs: [get_version]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "|${{needs.get_version.outputs.version}}|"
+      - run: echo "${{needs.get_version.outputs.version}}"
+      - uses: actions/checkout@v2
+        depth: 0
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: ${{ needs.get_version.outputs.version }}
