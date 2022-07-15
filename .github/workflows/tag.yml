@@ -13,13 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: version
-        run: cat VERSION
+        run: echo "::set-output name=test::$(cat VERSION)"
 
   release:
     needs: [get_version]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "|${{ needs.get_version.outputs.version }}|"
+      - run: echo "|${{needs.get_version.outputs.version}}|"
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: ${{ needs.get_version.outputs.version }}
