@@ -52,5 +52,6 @@ if git_log:
 else:
     print("- Various minor improvements\n")
 print(
-    f"**Full Changelog**: https://github.com/scikit-hep/pyhepmc/compare/v{latest_tag}...v{new_version}"
+    "**Full Changelog**: https://github.com/scikit-hep/pyhepmc/compare/"
+    f"v{latest_tag}...v{new_version}"
 )
