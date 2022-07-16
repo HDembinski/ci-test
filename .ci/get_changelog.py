@@ -46,4 +46,12 @@ git_log = re.findall(
     subp.check_output(["git", "log", "--oneline", f"v{latest_tag}..HEAD"]).decode(),
 )
 
-print("\n".join(f"- {x}" for x in git_log))
+print("## What's Changed\n")
+if git_log:
+    print("".join(f"- {x}\n" for x in git_log))
+else:
+    print("- Various minor improvements\n")
+print(
+    "**Full Changelog**: https://github.com/scikit-hep/pyhepmc/compare/"
+    f"v{latest_tag}...v{new_version}"
+)
